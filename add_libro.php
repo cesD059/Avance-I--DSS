@@ -1,4 +1,5 @@
 <?php	
+include('includes/head.php');
 include('db.php');
 
 if (isset($_POST['save'])) {

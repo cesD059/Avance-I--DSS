@@ -42,8 +42,10 @@ if (isset($_POST['update'])) {
   header('Location: librosObtenidos_gallery.php');
 }
 
+include('includes/head.php');
+include('includes/navbar.php');
 ?>
-<?php include('includes/navbar.php'); ?>
+
 <div class="container p-4">
   <div class="row">
     <div class="col-md-4 mx-auto">

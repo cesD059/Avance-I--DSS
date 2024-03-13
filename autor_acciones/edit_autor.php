@@ -37,6 +37,7 @@ if (isset($_POST['save'])) {
     header('Location: ../Autores.php');
   }
 
+include('../includes/head.php');
 include('../includes/navbar.php');
 
 ?>
