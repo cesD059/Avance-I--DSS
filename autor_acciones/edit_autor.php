@@ -37,11 +37,12 @@ if (isset($_POST['save'])) {
     header('Location: ../Autores.php');
   }
 
-include('../includes/head.php');
-include('../includes/navbar.php');
+include('includes/head.php');
+include('includes/navbar.php');
 
 ?>
 
+<h1 class="display-4 text-center mt-5">Editar Autor</h1>
 
 <form class="form" id="autores_form" action="edit_autor.php?id=<?php echo $_GET['id']; ?>" method="POST">
         <div class="left-section">
