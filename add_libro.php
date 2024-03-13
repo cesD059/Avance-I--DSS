@@ -7,11 +7,16 @@ if (isset($_POST['save'])) {
     $title = $_POST['titulo'];
     $autor = $_POST['autor'];
     $url = $_POST['url'];
+    $descripcion = $_POST['descripcion'];
     $categoria = $_POST['categoria'];
     $estado = $_POST['estado'];
 
-    $add_libro_query = "INSERT INTO libros (titulo,url_img,autor_id,estado_id,categoria_id,id_usuario) 
-    VALUES ('$title', '$url', '$autor', '$estado', '$categoria', '$usuario')";
+    if($url == '') {
+        $url = 'img/stock.jpg';
+    }
+
+    $add_libro_query = "INSERT INTO libros (titulo,url_img,descripcion,autor_id,estado_id,categoria_id,id_usuario) 
+    VALUES ('$title', '$url', '$descripcion','$autor', '$estado', '$categoria', '$usuario')";
     $result = mysqli_query($conn, $add_libro_query);
 
     if(!$result) {
@@ -51,6 +56,8 @@ if (isset($_POST['save'])) {
                 <label for="autor">URL Imagen (Opcional):</label>
                 <input type="text" id="url" name="url" placeholder="">
             </div>
+            <input type="submit" name="save" value="Guardar Información"/>
+            <input type ="reset" value="Limpiar">
         </div>
         <div class="right-section">
             <div class="form-item">
@@ -75,9 +82,11 @@ if (isset($_POST['save'])) {
                   <option value="2">Deseado</option>
               </select>
             </div>
+            <div class="form-item">
+                    <label for="descripcion">Información adicional:</label>
+                    <textarea name="descripcion"></textarea>
+            </div>
         </div>
-
-        <input type="submit" name="save" value="Guardar Información"/>
     </form>
 
 <?php

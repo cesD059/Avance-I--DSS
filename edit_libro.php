@@ -2,6 +2,7 @@
 include("db.php");
 $title = '';
 $url= '';
+$descripcion = '';
 $autor= '';
 $estado= '';
 $categoria= '';
@@ -19,6 +20,7 @@ if  (isset($_GET['id'])) {
 
     $title = $row['titulo'];
     $url = $row['url_img'];
+    $descripcion = $row['descripcion'];
     $autor = $row['autor_id'];
     $categoria = $row['categoria_id'];
     $estado = $row['estado_id'];
@@ -29,13 +31,18 @@ if  (isset($_GET['id'])) {
 if (isset($_POST['update'])) {
   $usuario = '1';
   $title = $_POST['titulo'];
-  $autor = $_POST['autor'];
   $url = $_POST['url'];
+  $descripcion = $_POST['descripcion'];
+  $autor = $_POST['autor'];
   $categoria = $_POST['categoria'];
   $estado = $_POST['estado'];
 
+  if($url == '') {
+    $url = 'img/stock.jpg';
+    }
+
   $query = "UPDATE libros set titulo = '$title',
-  url_img = '$url', autor_id = '$autor', categoria_id = '$categoria', estado_id = '$estado', id_usuario = '$usuario' WHERE id=$id";
+  url_img = '$url', descripcion = '$descripcion', autor_id = '$autor', categoria_id = '$categoria', estado_id = '$estado', id_usuario = '$usuario' WHERE id=$id";
 
   mysqli_query($conn, $query);
 
@@ -46,11 +53,7 @@ include('includes/head.php');
 include('includes/navbar.php');
 ?>
 
-<div class="container p-4">
-  <div class="row">
-    <div class="col-md-4 mx-auto">
-      <div class="card card-body">
-
+<h1 class="display-4 text-center mt-5">Editar Libro</h1>
       <!-- Form para editar libro -->
       <form class="form" id="NuevoLibro_Form" action="edit_libro.php?id=<?php echo $_GET['id']; ?>" method="POST">
         <div class="left-section">
@@ -74,6 +77,8 @@ include('includes/navbar.php');
                 <label for="autor">URL Imagen (Opcional):</label>
                 <input type="text" id="url" name="url" placeholder="" value="<?php echo $url; ?>">
             </div>
+            <input type="submit" name="update" value="Guardar Información"/>
+            <input type ="reset" value="Limpiar">
         </div>
         <div class="right-section">
             <div class="form-item">
@@ -98,14 +103,11 @@ include('includes/navbar.php');
                   <option value="2">Deseado</option>
               </select>
             </div>
+            <div class="form-item">
+                    <label for="descripcion">Información adicional:</label>
+                    <textarea name="descripcion"><?php echo $descripcion; ?></textarea>
+            </div>
         </div>
-
-        <input type="submit" name="update" value="Guardar Información"/>
     </form>
 
-
-      </div>
-    </div>
-  </div>
-</div>
 <?php include('includes/footer.php'); ?>

@@ -3,7 +3,7 @@ include('includes/head.php');
 include('includes/navbar.php');
 include('db.php');
 
-$query = "SELECT libros.id AS id, libros.titulo AS titulo, libros.url_img AS url_img, autores.nombre AS autor, categorias.nombre AS categoria, estados.nombre AS estado
+$query = "SELECT libros.id AS id, libros.titulo AS titulo, libros.url_img AS url_img, libros.descripcion AS descripcion, autores.nombre AS autor, categorias.nombre AS categoria, estados.nombre AS estado
             FROM libros
             INNER JOIN autores ON libros.autor_id = autores.id
             INNER JOIN categorias ON libros.categoria_id = categorias.id
@@ -14,7 +14,7 @@ if (isset($_POST['buscar_categoria'])) {
   $categoria = $_POST['categoria_seleccionada'];
   if($categoria != 0){
     //Se añade "WHERE categorias.id = '$categoria'"
-    $query = "SELECT libros.id AS id, libros.titulo AS titulo, libros.url_img AS url_img, autores.nombre AS autor, categorias.nombre AS categoria, estados.nombre AS estado
+    $query = "SELECT libros.id AS id, libros.titulo AS titulo, libros.url_img AS url_img,  libros.descripcion AS descripcion, autores.nombre AS autor, categorias.nombre AS categoria, estados.nombre AS estado
             FROM libros
             INNER JOIN autores ON libros.autor_id = autores.id
             INNER JOIN categorias ON libros.categoria_id = categorias.id
@@ -62,7 +62,7 @@ if (isset($_POST['buscar_categoria'])) {
 <div class="container-fluid">
 
  <!-- DIV donde se muestran los libros --> 
-  <div class="row" id="Books_Container">
+  <div class="row contenedor_galeria">
         <?php
 
             $result_libros = mysqli_query($conn, $query);
@@ -73,11 +73,12 @@ if (isset($_POST['buscar_categoria'])) {
 
                 <div class='col-md-3'>
                     <div class='card' style='width: 18rem;'>
-                    <img src='<?php echo $row['url_img'] ?>' class='card-img-top' alt=''>
+                    <img src='<?php echo $row['url_img'] ?>' class='card-img-top' alt='Ha habido problemas al cargar la imagen :('>
                         <div class='card-body'>
                         <h5 class='card-title'><?php echo $row['titulo'] ?></h5>
                             <p class='card-text'><?php echo $row['autor'] ?></p>
                             <p class='card-text'><?php echo $row['categoria'] ?></p>
+                            <p class='card-text'><?php echo $row['descripcion'] ?></p>
                             <a href="edit_libro.php?id=<?php echo $row['id'] ?>" class='btn btn-primary btn-eliminar'>Editar</a>
                             <a href="delete_libro.php?id=<?php echo $row['id'] ?>" class='btn btn-danger btn-eliminar'>Eliminar</a>
                         </div>

@@ -52,14 +52,17 @@ include('includes/navbar.php');
             </div>
             <div class="form-item">
                 <label for="nacimiento">Nacimiento:</label>
-                <input type="date" id="nacimiento" name="nacimiento" placeholder="">
+                <input type="date" id="nacimiento" name="nacimiento">
             </div>
+            <input type="submit" name="save" value="Guardar Información"/>
+            <input type ="reset" value="Limpiar">
         </div>
         <div class="right-section">
             <div class="form-item">
                 <div class="form-item">
+                <label for="nacionalidad">Nacionalidad:</label>
                     <select name="nacionalidad">
-                        <option value='' >Select Country</option>
+                        <option value='' >Seleccione país</option>
                         <?php
                         foreach($countries as $country) { 
                            echo "<option value='$country'>$country</option>";
@@ -72,7 +75,6 @@ include('includes/navbar.php');
                 </div>
             </div>
         </div>
-        <input type="submit" name="save" value="Guardar Información"/>
     </form>
 
 <?php

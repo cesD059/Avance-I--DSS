@@ -62,7 +62,7 @@ if (isset($_POST['buscar_categoria'])) {
 <div class="container-fluid">
     
     <!-- DIV donde se muestran los libros -->
-  <div class="row" id="Books_Container">
+  <div class="row contenedor_galeria">
         <?php
             $result_libros = mysqli_query($conn, $query);
 

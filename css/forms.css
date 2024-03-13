@@ -17,8 +17,8 @@ label {
     font-weight: bold;
 }
 
-input[type="text"],
-select {
+input[type="text"], input[type="date"],
+select, textarea {
     width: 100%;
     padding: 10px;
     border-radius: 5px;
@@ -36,6 +36,19 @@ input[type="submit"] {
 
 input[type="submit"]:hover {
     background-color: #9a61bb;
+}
+
+input[type="reset"] {
+    padding: 10px 20px;
+    background-color: #ef5348;
+    color: #fff;
+    border: none;
+    border-radius: 10px;
+    cursor: pointer;
+}
+
+input[type="reset"]:hover {
+    background-color: #ef3d30;
 }
 
 .left-section, .right-section {

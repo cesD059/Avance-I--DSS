@@ -36,12 +36,15 @@ if (isset($_POST['save'])) {
                 <label for="nacimiento">Nacimiento:</label>
                 <input type="date" id="nacimiento" name="nacimiento" placeholder="">
             </div>
+            <input type="submit" name="save" value="Guardar Información"/>
+            <input type ="reset" value="Limpiar">
         </div>
         <div class="right-section">
             <div class="form-item">
                 <div class="form-item">
+                <label for="nacionalidad">Nacionalidad:</label>
                     <select name="nacionalidad">
-                        <option value='' >Select Country</option>
+                        <option value=''>Seleccione país</option>
                         <?php
                         foreach($countries as $country) { 
                            echo "<option value='$country'>$country</option>";
@@ -50,11 +53,10 @@ if (isset($_POST['save'])) {
                 </div>
                 <div class="form-item">
                     <label for="descripcion">Información adicional:</label>
-                    <textarea name="descripcion" form="autores_form">Información del autor...</textarea>
+                    <textarea name="descripcion" form="autores_form"></textarea>
                 </div>
             </div>
         </div>
-        <input type="submit" name="save" value="Guardar Información"/>
     </form>
 
 <?php
