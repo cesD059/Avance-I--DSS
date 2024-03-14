@@ -38,7 +38,7 @@ if (isset($_POST['save'])) {
         <div class="left-section">
             <div class="form-item">
                 <label for="nombre">Titulo:</label>
-                <input type="text" id="titulo" name="titulo" placeholder="">
+                <input type="text" id="titulo" name="titulo" placeholder="" required minlength="1">
             </div>
             <div class="form-item">
                 <label for="autor">Autor:</label>
@@ -54,7 +54,7 @@ if (isset($_POST['save'])) {
             </div>
             <div class="form-item">
                 <label for="autor">URL Imagen (Opcional):</label>
-                <input type="text" id="url" name="url" placeholder="">
+                <input type="text" id="url" name="url" placeholder="" Opcional pattern=".+\.com">
             </div>
             <input type="submit" name="save" value="Guardar Información"/>
             <input type ="reset" value="Limpiar">

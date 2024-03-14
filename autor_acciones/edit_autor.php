@@ -52,11 +52,11 @@ include('includes/navbar.php');
         <div class="left-section">
             <div class="form-item">
                 <label for="nombre">Nombre del Autor:</label>
-                <input type="text" id="nombre" name="nombre" value="<?php echo $nombre; ?>">
+                <input type="text" id="nombre" name="nombre" required minlength="2" value="<?php echo $nombre; ?>">
             </div>
             <div class="form-item">
                 <label for="nacimiento">Nacimiento:</label>
-                <input type="date" id="nacimiento" name="nacimiento">
+                <input type="date" id="nacimiento" name="nacimiento" required>
             </div>
             <input type="submit" name="save" value="Guardar Información"/>
             <input type ="reset" value="Limpiar">

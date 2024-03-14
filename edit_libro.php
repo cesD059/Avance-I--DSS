@@ -59,7 +59,7 @@ include('includes/navbar.php');
         <div class="left-section">
             <div class="form-item">
                 <label for="nombre">Titulo:</label>
-                <input type="text" id="titulo" name="titulo" value="<?php echo $title; ?>" placeholder="">
+                <input type="text" id="titulo" name="titulo" required minlength="1" value="<?php echo $title; ?>" placeholder="">
             </div>
             <div class="form-item">
                 <label for="autor">Autor:</label>
@@ -75,7 +75,7 @@ include('includes/navbar.php');
             </div>
             <div class="form-item">
                 <label for="autor">URL Imagen (Opcional):</label>
-                <input type="text" id="url" name="url" placeholder="" value="<?php echo $url; ?>">
+                <input type="text" id="url" name="url" placeholder="" Opcional pattern=".+\" value="<?php echo $url; ?>" >
             </div>
             <input type="submit" name="update" value="Guardar Información"/>
             <input type ="reset" value="Limpiar">
