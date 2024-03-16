@@ -37,7 +37,8 @@ if (isset($_POST['save'])) {
     if(!$result) {
         die("Operación fallida");
     }
-
+    $_SESSION['message'] = 'editado con exito';
+    $_SESSION['message_type'] = 'correcta';
     header('Location: ../Autores.php');
   }
 

@@ -45,6 +45,8 @@ if (isset($_POST['update'])) {
   url_img = '$url', descripcion = '$descripcion', autor_id = '$autor', categoria_id = '$categoria', estado_id = '$estado', id_usuario = '$usuario' WHERE id=$id";
 
   mysqli_query($conn, $query);
+  $_SESSION['message'] = 'editado con exito';
+  $_SESSION['message_type'] = 'correcta';
 
   header('Location: librosObtenidos_gallery.php');
 }
@@ -109,5 +111,5 @@ include('includes/navbar.php');
             </div>
         </div>
     </form>
-
+              
 <?php include('includes/footer.php'); ?>

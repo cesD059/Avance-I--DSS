@@ -6,7 +6,12 @@ include('includes/navbar.php');
 ?>
 
 <br>
-
+                <?php if(isset($_SESSION['message'])) {?>
+                 <div class="alert alert-warning alert-dismissible fade show" role="alert">
+                  <?= $_SESSION['message'] ?>
+                 <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                </div>
+                  <?php session_unset(); } ?>
 <h1 class="display-4 text-center mt-5">Autores</h1>
 
 <div class="row justify-content-center">

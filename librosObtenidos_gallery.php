@@ -70,6 +70,12 @@ if (isset($_POST['buscar_categoria'])) {
             while($row = mysqli_fetch_array($result_libros)){ 
 
                 if($row['estado'] == 'Obtenido'){ ?>
+                         <?php if(isset($_SESSION['message'])) {?>
+                 <div class="alert alert-warning alert-dismissible fade show" role="alert">
+                  <?= $_SESSION['message'] ?>
+                 <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                </div>
+                  <?php session_unset(); } ?>
 
                 <div class='col-md-3'>
                     <div class='card' style='width: 18rem;'>
@@ -84,6 +90,7 @@ if (isset($_POST['buscar_categoria'])) {
                         </div>
                     </div> 
                 </div>
+                
             <?php
             }
         } ?>

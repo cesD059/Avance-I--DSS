@@ -10,7 +10,8 @@ if(isset($_GET['id'])) {
   if(!$result) {
     die("Operación fallida.");
   }
-
+  $_SESSION['message'] = 'Borrado con exito';
+  $_SESSION['message_type'] = 'correcta';
   header('Location: ../Autores.php');
 }
 
