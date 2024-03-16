@@ -23,6 +23,15 @@ if (isset($_POST['buscar_categoria'])) {
 }
 ?>
 
+<br>
+
+<?php if(isset($_SESSION['message'])) {?>
+                 <div class="alert alert-<?= $_SESSION['message_type'] ?> alert-dismissible fade show" role="alert">
+                  <?= $_SESSION['message'] ?>
+                 <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                </div>
+                  <?php session_unset(); } ?>
+
 <h1 class="display-4 text-center mt-5">Libros Comprados</h1>
    
 <div class="row justify-content-center">
@@ -70,12 +79,6 @@ if (isset($_POST['buscar_categoria'])) {
             while($row = mysqli_fetch_array($result_libros)){ 
 
                 if($row['estado'] == 'Obtenido'){ ?>
-                         <?php if(isset($_SESSION['message'])) {?>
-                 <div class="alert alert-warning alert-dismissible fade show" role="alert">
-                  <?= $_SESSION['message'] ?>
-                 <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
-                </div>
-                  <?php session_unset(); } ?>
 
                 <div class='col-md-3'>
                     <div class='card' style='width: 18rem;'>

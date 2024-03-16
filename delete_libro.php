@@ -10,6 +10,8 @@ if(isset($_GET['id'])) {
     die("Operación fallida.");
   }
 
+  $_SESSION['message'] = 'Libro borrado con exito';
+  $_SESSION['message_type'] = 'danger';
   header('Location: librosObtenidos_gallery.php');
 }
 

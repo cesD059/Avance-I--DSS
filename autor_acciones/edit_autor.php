@@ -29,6 +29,11 @@ if (isset($_POST['save'])) {
     $nacionalidad = $_POST['nacionalidad'];
     $descripcion = $_POST['descripcion'];
 
+    if($descripcion == ''){
+        $descripcion = 'Sin información';
+    }
+
+
     $query = "UPDATE autores set nombre = '$nombre',
     nacimiento = '$nacimiento', nacionalidad = '$nacionalidad', descripcion = '$descripcion' WHERE id=$id";
 
@@ -37,8 +42,8 @@ if (isset($_POST['save'])) {
     if(!$result) {
         die("Operación fallida");
     }
-    $_SESSION['message'] = 'editado con exito';
-    $_SESSION['message_type'] = 'correcta';
+    $_SESSION['message'] = 'Autor editado con exito';
+    $_SESSION['message_type'] = 'success';
     header('Location: ../Autores.php');
   }
 
@@ -76,7 +81,7 @@ include('includes/navbar.php');
                 </div>
                 <div class="form-item">
                     <label for="descripcion">Información adicional:</label>
-                    <textarea name="descripcion" form="autores_form" value="<?php echo $descripcion; ?>">Información del autor...</textarea>
+                    <textarea name="descripcion" form="autores_form" value="<?php echo $descripcion; ?>"></textarea>
                 </div>
             </div>
         </div>

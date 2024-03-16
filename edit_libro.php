@@ -40,14 +40,17 @@ if (isset($_POST['update'])) {
   if($url == '') {
     $url = 'img/stock.jpg';
     }
+    if($descripcion == ''){
+      $descripcion = 'Sin información';
+  }
 
   $query = "UPDATE libros set titulo = '$title',
   url_img = '$url', descripcion = '$descripcion', autor_id = '$autor', categoria_id = '$categoria', estado_id = '$estado', id_usuario = '$usuario' WHERE id=$id";
 
   mysqli_query($conn, $query);
-  $_SESSION['message'] = 'editado con exito';
-  $_SESSION['message_type'] = 'correcta';
 
+  $_SESSION['message'] = 'Libro editado con exito';
+  $_SESSION['message_type'] = 'success';
   header('Location: librosObtenidos_gallery.php');
 }
 
@@ -61,7 +64,7 @@ include('includes/navbar.php');
         <div class="left-section">
             <div class="form-item">
                 <label for="nombre">Titulo:</label>
-                <input type="text" id="titulo" name="titulo" required minlength="1" value="<?php echo $title; ?>" placeholder="">
+                <input type="text" id="titulo" name="titulo" required minlength="1" value="<?php echo $title; ?>" placeholder="Introduzca el titulo del libro">
             </div>
             <div class="form-item">
                 <label for="autor">Autor:</label>
@@ -76,8 +79,8 @@ include('includes/navbar.php');
                 </select>
             </div>
             <div class="form-item">
-                <label for="autor">URL Imagen (Opcional):</label>
-                <input type="text" id="url" name="url" placeholder="" Opcional pattern=".+\" value="<?php echo $url; ?>" >
+                <label for="url">URL Imagen (Opcional):</label>
+                <input type="url" id="url" name="url" placeholder="Introduza una imagen" Opcional pattern=".+\" value="<?php echo $url; ?>" >
             </div>
             <input type="submit" name="update" value="Guardar Información"/>
             <input type ="reset" value="Limpiar">
@@ -107,7 +110,7 @@ include('includes/navbar.php');
             </div>
             <div class="form-item">
                     <label for="descripcion">Información adicional:</label>
-                    <textarea name="descripcion"><?php echo $descripcion; ?></textarea>
+                    <textarea name="descripcion" placeholder="Introduzca sus opiniones o datos interesantes!"><?php echo $descripcion; ?></textarea>
             </div>
         </div>
     </form>

@@ -14,6 +14,9 @@ if (isset($_POST['save'])) {
     if($url == '') {
         $url = 'img/stock.jpg';
     }
+    if($descripcion == ''){
+        $descripcion = 'Sin información';
+    }
 
     $add_libro_query = "INSERT INTO libros (titulo,url_img,descripcion,autor_id,estado_id,categoria_id,id_usuario) 
     VALUES ('$title', '$url', '$descripcion','$autor', '$estado', '$categoria', '$usuario')";
@@ -23,6 +26,8 @@ if (isset($_POST['save'])) {
         die("Operación fallida");
     }
 
+    $_SESSION['message'] = 'Libro añadido con exito';
+    $_SESSION['message_type'] = 'success';
     header('Location: librosObtenidos_gallery.php');
   }
 
@@ -30,15 +35,14 @@ if (isset($_POST['save'])) {
 
 ?>
 
-
-<h1 class="display-4 text-center mt-5">Nuevo Libro</h1>
+    <h1 class="display-4 text-center mt-5">Nuevo Libro</h1>
 
     <!-- Form para agregar nuevo libro -->
     <form class="form" id="NuevoLibro_Form" action="add_libro.php" method="POST">
         <div class="left-section">
             <div class="form-item">
                 <label for="nombre">Titulo:</label>
-                <input type="text" id="titulo" name="titulo" placeholder="" required minlength="1">
+                <input type="text" id="titulo" name="titulo" placeholder="Introduzca el titulo del libro" required minlength="1">
             </div>
             <div class="form-item">
                 <label for="autor">Autor:</label>
@@ -53,8 +57,9 @@ if (isset($_POST['save'])) {
                 </select>
             </div>
             <div class="form-item">
-                <label for="autor">URL Imagen (Opcional):</label>
-                <input type="text" id="url" name="url" placeholder="" Opcional pattern=".+\.com">
+                <label for="url">URL Imagen (Opcional):</label>
+                <input type="url" id="url" name="url" placeholder="Introduzca su Imagen" Opcional>
+
             </div>
             <input type="submit" name="save" value="Guardar Información"/>
             <input type ="reset" value="Limpiar">
@@ -84,7 +89,7 @@ if (isset($_POST['save'])) {
             </div>
             <div class="form-item">
                     <label for="descripcion">Información adicional:</label>
-                    <textarea name="descripcion"></textarea>
+                    <textarea name="descripcion" placeholder="Introduzca sus opiniones o datos interesantes!"></textarea>
             </div>
         </div>
     </form>

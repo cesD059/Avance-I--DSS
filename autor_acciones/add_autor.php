@@ -12,6 +12,10 @@ if (isset($_POST['save'])) {
     $nacionalidad = $_POST['nacionalidad'];
     $descripcion = $_POST['descripcion'];
 
+    if($descripcion == ''){
+        $descripcion = 'Sin información';
+    }
+
     $add_autor_query = "INSERT INTO autores (nombre,nacimiento,nacionalidad,descripcion) 
     VALUES ('$nombre', '$nacimiento', '$nacionalidad', '$descripcion')";
     $result = mysqli_query($conn, $add_autor_query);
@@ -19,8 +23,8 @@ if (isset($_POST['save'])) {
     if(!$result) {
         die("Operación fallida");
     }
-    $_SESSION['message'] = 'añadido con exito';
-    $_SESSION['message_type'] = 'correcta';
+    $_SESSION['message'] = 'Autor añadido con exito';
+    $_SESSION['message_type'] = 'success';
     header('Location: ../Autores.php');
   }
 ?>
@@ -44,7 +48,7 @@ if (isset($_POST['save'])) {
             <div class="form-item">
                 <div class="form-item">
                 <label for="nacionalidad">Nacionalidad:</label>
-                    <select name="nacionalidad">
+                    <select name="nacionalidad" required>
                         <option value=''>Seleccione país</option>
                         <?php
                         foreach($countries as $country) { 
