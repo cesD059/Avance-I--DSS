@@ -193,10 +193,6 @@ button:hover {
 h1{
   text-align: center;
 }
-.row{
-  width: 40%;
-  background-color: antiquewhite;
-}
 .boton-enlace {
   background-color: #8A2BE2; /* Color lila */
   color: #FFF; /* Color blanco */
