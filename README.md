@@ -1,4 +1,4 @@
-# Proyecto Avance
+# Proyecto Catedra Avance 1 - DSS
 ## Desarrollo de Aplic. Web con Soft. Interpret.en el Servidor
 ## DSS404 - G05T
 
