@@ -13,5 +13,3 @@
 
 ### LINKS:
 - [Link Notion](https://succinct-appeal-f9e.notion.site/Proyecto-Catedra-Avance-1-DSS-92c8d70fc7e94e8db406b907372f7ea6?pvs=4)
-
-- [Link Mock Ups]()
