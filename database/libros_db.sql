@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1:3306
--- Tiempo de generación: 13-03-2024 a las 23:18:11
+-- Tiempo de generación: 17-03-2024 a las 22:45:35
 -- Versión del servidor: 8.0.31
 -- Versión de PHP: 8.0.26
 
@@ -34,15 +34,10 @@ CREATE TABLE IF NOT EXISTS `autores` (
   `nacimiento` varchar(100) NOT NULL,
   `nacionalidad` varchar(100) NOT NULL,
   `descripcion` text,
-  PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
-
---
--- Volcado de datos para la tabla `autores`
---
-
-INSERT INTO `autores` (`id`, `nombre`, `nacimiento`, `nacionalidad`, `descripcion`) VALUES
-(1, 'Juan', '2024-03-22', 'Australia', 'Información del autor...');
+  `id_usuario` int DEFAULT NULL,
+  PRIMARY KEY (`id`),
+  KEY `id_usuario` (`id_usuario`)
+) ENGINE=InnoDB AUTO_INCREMENT=1 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
 -- --------------------------------------------------------
 
@@ -115,14 +110,7 @@ CREATE TABLE IF NOT EXISTS `libros` (
   KEY `categoria_id` (`categoria_id`),
   KEY `estado_id` (`estado_id`),
   KEY `id_usuario` (`id_usuario`)
-) ENGINE=InnoDB AUTO_INCREMENT=16 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
-
---
--- Volcado de datos para la tabla `libros`
---
-
-INSERT INTO `libros` (`id`, `titulo`, `url_img`, `descripcion`, `autor_id`, `categoria_id`, `estado_id`, `id_usuario`) VALUES
-(6, 'El cuervo', 'https://assets-global.website-files.com/6034d7d1f3e0f52c50b2adee/625452ec756aec5814e47d52_6034d7d1f3e0f53aadb2b1f1_El-cuervo-edgar-allan-poe-editorial-alma.jpeg', 'Mi libro favorito', 1, 7, 1, 1);
+) ENGINE=InnoDB AUTO_INCREMENT=1 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
 -- --------------------------------------------------------
 
@@ -133,21 +121,30 @@ INSERT INTO `libros` (`id`, `titulo`, `url_img`, `descripcion`, `autor_id`, `cat
 DROP TABLE IF EXISTS `usuarios`;
 CREATE TABLE IF NOT EXISTS `usuarios` (
   `id` int NOT NULL AUTO_INCREMENT,
+  `Usuario` varchar(100) NOT NULL,
   `Correo` varchar(255) NOT NULL,
-  `Contraseña` varchar(255) NOT NULL,
+  `Password` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
 --
 -- Volcado de datos para la tabla `usuarios`
 --
 
-INSERT INTO `usuarios` (`id`, `Correo`, `Contraseña`) VALUES
-(1, 'usuario@gmail.com', '123');
+INSERT INTO `usuarios` (`id`, `Usuario`, `Correo`, `Password`) VALUES
+(1, 'usuario1', 'usuario@gmail.com', '12345678'),
+(2, 'usuario2', 'paola@gmail.com', 'abcd1234'),
+(3, 'usuario3', 'perez@gmail.com', 'tsd78902');
 
 --
 -- Restricciones para tablas volcadas
 --
+
+--
+-- Filtros para la tabla `autores`
+--
+ALTER TABLE `autores`
+  ADD CONSTRAINT `autores_ibfk_1` FOREIGN KEY (`id_usuario`) REFERENCES `usuarios` (`id`);
 
 --
 -- Filtros para la tabla `libros`
@@ -155,10 +152,11 @@ INSERT INTO `usuarios` (`id`, `Correo`, `Contraseña`) VALUES
 ALTER TABLE `libros`
   ADD CONSTRAINT `fk_categoria` FOREIGN KEY (`categoria_id`) REFERENCES `categorias` (`id`),
   ADD CONSTRAINT `libros_ibfk_1` FOREIGN KEY (`id_usuario`) REFERENCES `usuarios` (`id`),
-  ADD CONSTRAINT `libros_ibfk_2` FOREIGN KEY (`autor_id`) REFERENCES `autores` (`id`),
-  ADD CONSTRAINT `libros_ibfk_3` FOREIGN KEY (`estado_id`) REFERENCES `estados` (`id`);
+  ADD CONSTRAINT `libros_ibfk_3` FOREIGN KEY (`estado_id`) REFERENCES `estados` (`id`),
+  ADD CONSTRAINT `libros_ibfk_4` FOREIGN KEY (`autor_id`) REFERENCES `autores` (`id`);
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
+

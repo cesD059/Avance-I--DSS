@@ -127,6 +127,7 @@ div.row{
   margin-left: 50%;
  }
 
+
  /* Estilos del formulario */
 .form {
   max-width: 800px;
@@ -157,7 +158,6 @@ label {
 }
 
 input {
-  width: 95%;
   padding: 10px;
   border: 1px solid #ccc;
   border-radius: 5px;
@@ -192,10 +192,6 @@ button:hover {
 }
 h1{
   text-align: center;
-}
-.row{
-  width: 40%;
-  background-color: antiquewhite;
 }
 .boton-enlace {
   background-color: #8A2BE2; /* Color lila */

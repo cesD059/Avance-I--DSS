@@ -27,9 +27,10 @@
         </li>
       </ul>
     </div>
-    <button id="Btn_salir" class="boton-enlace">
-      <img src="img/iconos/icons8-cerrar-sesión-48.png" alt="Icono 1" class="icono">
+    <a href="cerrar_sesion.php" id="Btn_salir" class="boton-enlace">
+    <img src="img/iconos/icons8-cerrar-sesión-48.png" alt="Icono 1" class="icono">
       Cerrar Sesion
-    </button>
+    </a>
+
   </div>
 </nav>

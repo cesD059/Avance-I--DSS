@@ -1,17 +1,20 @@
 <?php
-include('db.php');
-include('includes/head.php');
-include('includes/navbar.php');
+include ('db.php');
+include ('includes/head.php');
+include ('includes/navbar.php');
 
 ?>
 
 <br>
-                <?php if(isset($_SESSION['message'])) {?>
-                 <div class="alert alert-<?= $_SESSION['message_type'] ?> alert-dismissible fade show" role="alert">
-                  <?= $_SESSION['message'] ?>
-                 <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
-                </div>
-                  <?php session_unset(); } ?>
+<?php if (isset ($_SESSION['message'])) { ?>
+    <div class="alert alert-<?= $_SESSION['message_type'] ?> alert-dismissible fade show" role="alert">
+        <?= $_SESSION['message'] ?>
+        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+    </div>
+    <?php
+    unset($_SESSION['message']);
+    unset($_SESSION['message_type']);
+} ?>
 <h1 class="display-4 text-center mt-5">Autores</h1>
 
 <div class="row justify-content-center">
@@ -30,8 +33,8 @@ include('includes/navbar.php');
 
         $result = mysqli_query($conn, $query);
 
-        while ($row = mysqli_fetch_array($result)) { ?>
-
+        while ($row = mysqli_fetch_array($result)) { 
+            if($row['id_usuario'] == $_SESSION['id']){?>
             <div class='col-md-3'>
                 <div class='card' style='width: 18rem;'>
                     <div class='card-body'>
@@ -55,10 +58,11 @@ include('includes/navbar.php');
                 </div>
             </div>
             <?php
+            }
         } ?>
     </div>
 </div>
 
 <?php
-include('includes/footer.php');
+include ('includes/footer.php');
 ?>
