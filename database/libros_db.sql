@@ -135,6 +135,13 @@ INSERT INTO `usuarios` (`id`, `Usuario`, `Correo`, `Password`) VALUES
 (1, 'usuario1', 'usuario@gmail.com', '12345678'),
 (2, 'usuario2', 'paola@gmail.com', 'abcd1234'),
 (3, 'usuario3', 'perez@gmail.com', 'tsd78902');
+(4, 'usuario4', 'usuario1@gmail.com', '132465'),
+(5, 'usuario5', 'mena09@gmail.com', 'rrrr34'),
+(6, 'usuario6', 'bruno@gmail.com', 'abc123'),
+(7, 'usuario7', 'carlosp@gmail.com', 'abcd12'),
+(8, 'usuario8', 'fernanda@gmail.com', '123abc'),
+(9, 'usuario9', 'cristian@gmail.com', '123456ab'),
+(10, 'usuario10', 'usuario@gmail.com', '12121212')
 
 --
 -- Restricciones para tablas volcadas
