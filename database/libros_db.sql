@@ -135,6 +135,13 @@ INSERT INTO `usuarios` (`id`, `Usuario`, `Correo`, `Password`) VALUES
 (1, 'usuario1', 'usuario@gmail.com', '12345678'),
 (2, 'usuario2', 'paola@gmail.com', 'abcd1234'),
 (3, 'usuario3', 'perez@gmail.com', 'tsd78902');
+(4, 'usuario4', 'usuario1@gmail.com', '132465'),
+(5, 'usuario5', 'mena09@gmail.com', 'rrrr34'),
+(6, 'usuario6', 'bruno@gmail.com', 'abc123'),
+(7, 'usuario7', 'carlosp@gmail.com', 'abcd12'),
+(8, 'usuario8', 'fernanda@gmail.com', '123abc'),
+(9, 'usuario9', 'cristian@gmail.com', '123456ab'),
+(10, 'usuario10', 'usuario@gmail.com', '12121212');
 
 --
 -- Restricciones para tablas volcadas
@@ -144,17 +151,23 @@ INSERT INTO `usuarios` (`id`, `Usuario`, `Correo`, `Password`) VALUES
 -- Filtros para la tabla `autores`
 --
 ALTER TABLE `autores`
-  ADD CONSTRAINT `autores_ibfk_1` FOREIGN KEY (`id_usuario`) REFERENCES `usuarios` (`id`);
+INSERT INTO autores (nombre, nacimiento, nacionalidad, descripcion, id_usuario) VALUES
+('George Orwell', '25/06/1903', 'Británico', 'George Orwell fue un escritor y periodista británico...', 1),
+('F. Scott Fitzgerald', '24/09/1896', 'Estadounidense', 'F. Scott Fitzgerald fue un escritor estadounidense...', 2),
+('Gabriel García Márquez', '06/03/1927', 'Colombiano', 'Gabriel García Márquez fue un escritor colombiano...', 3),
+('Harper Lee', '28/04/1926', 'Estadounidense', 'Harper Lee fue una novelista estadounidense...', 4),
+('Julio Cortázar', '26/08/1914', 'Argentino', 'Julio Cortázar fue un escritor, traductor e intelectual...', 5);
 
 --
 -- Filtros para la tabla `libros`
 --
 ALTER TABLE `libros`
-  ADD CONSTRAINT `fk_categoria` FOREIGN KEY (`categoria_id`) REFERENCES `categorias` (`id`),
-  ADD CONSTRAINT `libros_ibfk_1` FOREIGN KEY (`id_usuario`) REFERENCES `usuarios` (`id`),
-  ADD CONSTRAINT `libros_ibfk_3` FOREIGN KEY (`estado_id`) REFERENCES `estados` (`id`),
-  ADD CONSTRAINT `libros_ibfk_4` FOREIGN KEY (`autor_id`) REFERENCES `autores` (`id`);
-COMMIT;
+  INSERT INTO libros (titulo, url_img, descripcion, autor_id, categoria_id, estado_id, id_usuario) VALUES
+('1984', '1984.jpg', '1984 es una novela política de ficción distópica...', 1, 2, 1, 1),
+('El Gran Gatsby', 'el_gran_gatsby.jpg', 'El Gran Gatsby es una novela que se desarrolla...', 2, 1, 1, 2),
+('Cien años de soledad', 'cien_anios_de_soledad.jpg', 'Cien años de soledad es una novela escrita por...', 3, 1, 1, 3),
+('Matar a un ruiseñor', 'matar_a_un_ruisenor.jpg', 'Matar a un ruiseñor es una novela escrita por...', 4, 4, 1, 4),
+('1984', '1984.jpg', '1984 es una novela política de ficción distópica...', 5, 2, 1, 5);
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
