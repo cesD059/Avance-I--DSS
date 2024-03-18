@@ -1,0 +1,140 @@
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    background-color: #f0f0f0;
+}
+
+.container {
+    display: flex;
+    background-color: #fff;
+    border-radius: 10px;
+    overflow: hidden;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+    max-width: 800px;
+    width: 100%;
+}
+
+.image-container {
+    flex: 1;
+    overflow: hidden;
+}
+
+.image-container img {
+    width: 100%;
+    height: 90%;
+    object-fit: cover;
+}
+
+.form-container {
+    flex: 1;
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.form {
+    width: 100%;
+    max-width: 300px;
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+h2 {
+    margin: 0;
+    margin-bottom: 20px;
+    color: #333;
+}
+
+input {
+    width: 100%;
+    padding: 10px;
+    margin: 10px 0;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+}
+
+button {
+    width: 100%;
+    padding: 10px;
+    background-color: #9a61bb;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    
+}
+
+button:hover {
+    background-color: #9a61bb;
+}
+.boton-enlace {
+    background-color: #8A2BE2; /* Color lila */
+    color: #FFF; /* Color blanco */
+    padding: 8px 20px;
+    text-decoration: none;
+    border: none;
+    border-radius: 5px;
+    font-size: 12px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+  }
+
+  .boton-enlace:hover {
+    background-color: #6A1B9A; /* Color lila oscuro al pasar el ratón */
+  }
+
+  #btn_google_auth{
+    background-color: rgb(250, 250, 250);
+    color: black;
+    box-shadow: 10px 10px 5px -8px rgba(0,0,0,0.75);
+-webkit-box-shadow: 10px 10px 5px -8px rgba(0,0,0,0.75);
+-moz-box-shadow: 10px 10px 5px -8px rgba(0,0,0,0.75);
+    margin-top: 1em;
+  }
+  #btn_google_auth img{
+    display: inline;
+    width: 25px;
+  }
+  #btn_google_auth p{
+    display: inline;
+  }
+  .form-section {
+    margin-bottom: 20px; /* Agrega espacio entre las secciones del formulario */
+}
+
+.form-item {
+    margin-bottom: 10px; /* Agrega espacio entre cada elemento del formulario */
+}
+
+.form-item label {
+    width: 100px; /* Ajusta el ancho del label según tus preferencias */
+}
+
+login-content {
+    display: flex;
+    justify-content: center; /* Centra el contenido horizontalmente */
+    align-items: center; /* Centra el contenido verticalmente */
+}
+
+.login-image {
+    width: 100px; /* Ajusta el ancho de la imagen según sea necesario */
+    height: auto; /* Permite que la altura se ajuste automáticamente para mantener la proporción */
+    margin-right: 20px; /* Ajusta el margen derecho entre la imagen y el formulario */
+}
+
+.login-image img {
+    max-width: 100%; /* Ajusta el ancho máximo de la imagen */
+    height: auto; /* Permite que la altura se ajuste automáticamente para mantener la proporción */
+}
+.login-content {
+    display: flex;
+    justify-content: center; /* Centra horizontalmente los elementos */
+    align-items: center; /* Centra verticalmente los elementos */
+}
