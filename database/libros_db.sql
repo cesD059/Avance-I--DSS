@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1:3306
--- Tiempo de generación: 17-03-2024 a las 22:45:35
+-- Tiempo de generación: 03-05-2024 a las 05:08:05
 -- Versión del servidor: 8.0.31
 -- Versión de PHP: 8.0.26
 
@@ -37,7 +37,57 @@ CREATE TABLE IF NOT EXISTS `autores` (
   `id_usuario` int DEFAULT NULL,
   PRIMARY KEY (`id`),
   KEY `id_usuario` (`id_usuario`)
-) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=19 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+
+--
+-- Volcado de datos para la tabla `autores`
+--
+
+INSERT INTO `autores` (`id`, `nombre`, `nacimiento`, `nacionalidad`, `descripcion`, `id_usuario`) VALUES
+(10, 'Edgar Allan Poe', '2024-05-08', 'Anguilla', 'Me encanta este autor', 1),
+(11, 'Frank Herbert', '8 de octubre de 1920', 'Estadounidense', NULL, 1),
+(18, 'Patrick Rothfuss', '6 de junio de 1973', 'Estadounidense', NULL, 1);
+
+-- --------------------------------------------------------
+
+--
+-- Estructura de tabla para la tabla `catalogo`
+--
+
+DROP TABLE IF EXISTS `catalogo`;
+CREATE TABLE IF NOT EXISTS `catalogo` (
+  `id` int NOT NULL AUTO_INCREMENT,
+  `titulo` varchar(255) NOT NULL,
+  `url_img` varchar(300) NOT NULL,
+  `descripcion` text NOT NULL,
+  `autor_nombre` varchar(255) NOT NULL,
+  `autor_nacimiento` varchar(255) NOT NULL,
+  `autor_nacionalidad` varchar(255) NOT NULL,
+  `categoria_id` int NOT NULL,
+  PRIMARY KEY (`id`),
+  KEY `categoria_id` (`categoria_id`)
+) ENGINE=InnoDB AUTO_INCREMENT=16 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+
+--
+-- Volcado de datos para la tabla `catalogo`
+--
+
+INSERT INTO `catalogo` (`id`, `titulo`, `url_img`, `descripcion`, `autor_nombre`, `autor_nacimiento`, `autor_nacionalidad`, `categoria_id`) VALUES
+(1, 'Dune', 'img/img.cate/cienciaficcion1.jpg', 'En un futuro lejano, en un universo donde las familias nobles controlan planetas enteros, surge una lucha por el control del recurso más valioso del universo: la especia melange. Esta es la trama central de \"Dune\", una obra maestra de la ciencia ficción escrita por Frank Herbert.', 'Frank Herbert', '8 de octubre de 1920', 'Estadounidense', 5),
+(2, 'El nuevo orden de las cosas', 'img/img.cate/cienciaficcion2.jpg', 'Juan José Millás nos sumerge en un mundo donde la rutina de un oficinista común se ve alterada por la aparición de un objeto peculiar en su lugar de trabajo. Esta novela desafía la percepción de la realidad y la lucha por la identidad en la sociedad moderna.', 'Juan José Millás', '31 de enero de 1946', 'Española', 5),
+(3, 'Un mundo Invertido', 'img/img.cate/cienciaficcion3.jpg', 'Christopher Priest nos presenta un mundo donde la realidad se entrelaza con los sueños. Dos amigos, obsesionados con una misteriosa casa en la playa, se embarcan en una búsqueda que los llevará a cuestionar su propia existencia y los límites de la percepción humana.', 'Christopher Priest', '14 de julio de 1943', 'Británica', 5),
+(4, 'La quinta Ola', 'img/img.cate/cienciaficcion4.jpg', 'En un mundo devastado por una serie de ataques alienígenas, Cassie Sullivan lucha por sobrevivir y encontrar a su hermano. \"La quinta Ola\" de Rick Yancey es una emocionante historia de resistencia humana y sacrificio en medio de la adversidad.', 'Rick Yancey', '4 de noviembre de 1962', 'Estadounidense', 5),
+(5, 'Panteon', 'img/img.cate/cienciaficcion5.jpg', 'Carlos Sisí nos lleva a un mundo oscuro donde los dioses antiguos despiertan de su letargo para sembrar el caos en la Tierra. \"Panteon\" es un thriller sobrenatural lleno de misterio, terror y acción.', 'Carlos Sisí', '12 de junio de 1971', 'Española', 5),
+(6, 'El nombre del viento', 'img/img.cate/cienciaficcion6.webp', 'En el reino de Temerant, el joven Kvothe narra su extraordinaria vida, desde sus humildes comienzos como músico callejero hasta convertirse en una leyenda viva. Patrick Rothfuss nos transporta a un mundo de magia, música y aventura en esta apasionante historia.', 'Patrick Rothfuss', '6 de junio de 1973', 'Estadounidense', 5),
+(7, 'Divergente', 'img/img.cate/cienciaficcion7.jpeg', 'En una sociedad dividida en facciones basadas en las virtudes humanas, Tris Prior descubre que ella es una divergente, alguien que no encaja en ninguna categoría. Veronica Roth teje una trama de acción y romance en un mundo distópico donde la divergencia es considerada una amenaza.', 'Veronica Roth', '19 de agosto de 1988', 'Estadounidense', 5),
+(8, 'El corredor del laberinto', 'img/img.cate/cienciaficcion8.jpg', 'Thomas despierta en un lugar llamado El Claro, rodeado por un laberinto gigante y habitado por otros chicos. James Dashner crea un thriller lleno de suspense y misterio en esta emocionante saga donde Thomas y sus amigos luchan por descubrir la verdad detrás de su encierro.', 'James Dashner', '26 de noviembre de 1972', 'Estadounidense', 5),
+(9, 'Los juegos del hambre', 'img/img.cate/cienciaficcion9.webp', 'En un futuro distópico, Katniss Everdeen se ofrece como voluntaria para los Juegos del Hambre, una competencia mortal transmitida por televisión donde los jóvenes luchan por sobrevivir. Suzanne Collins crea un mundo fascinante lleno de acción, intriga política y dilemas morales.', 'Suzanne Collins', '10 de agosto de 1962', 'Estadounidense', 5),
+(10, 'Arena Roja', 'img/img.cate/cienciaficcion10.jpeg', 'Gema Bonnín nos sumerge en un mundo donde la lucha por la supervivencia se convierte en un espectáculo para las masas. En un futuro distópico, los gladiadores se enfrentan en una arena sangrienta en busca de la libertad y la redención.', 'Gema Bonnín', '22 de mayo de 1978', 'Española', 5),
+(11, 'El hobbit', 'img/img.cate/cienciaficcion11.jpg', 'Bilbo Bolsón, un hobbit tranquilo y casero, es arrastrado a una emocionante aventura cuando el mago Gandalf y un grupo de enanos lo reclutan para recuperar un tesoro robado por el dragón Smaug. J.R.R. Tolkien nos lleva a la Tierra Media en esta encantadora historia llena de peligros y maravillas.', 'J.R.R. Tolkien', '3 de enero de 1892', 'Británica', 5),
+(12, 'La guerra de los mundos', 'img/img.cate/cienciaficcion12.jpg', 'H.G. Wells nos transporta a una Inglaterra victoriana invadida por extraterrestres marcianos. A través de la historia de un periodista solitario, presenciamos la devastación y el caos causado por la invasión extraterrestre en esta obra maestra de la ciencia ficción.', 'H.G. Wells', '21 de septiembre de 1866', 'Británica', 5),
+(13, 'Carbono modificado', 'img/img.cate/cienciaficcion13.jpg', 'En un futuro donde la conciencia humana puede ser almacenada y transferida entre cuerpos, Takeshi Kovacs es resucitado para investigar un asesinato en un mundo lleno de corrupción y desigualdad. Richard K. Morgan nos ofrece un thriller ciberpunk lleno de acción y reflexión filosófica.', 'Richard K. Morgan', '24 de septiembre de 1965', 'Británica', 5),
+(14, 'Los 100', 'img/img.cate/cienciaficcion14.jpg', 'Después de un holocausto nuclear, la humanidad se refugia en una estación espacial. Cuando los recursos escasean, 100 jóvenes delincuentes son enviados de regreso a la Tierra para determinar si es habitable. Kass Morgan presenta una emocionante historia de supervivencia y redención en un mundo postapocalíptico.', 'Kass Morgan', '21 de julio de 1984', 'Estadounidense', 5),
+(15, 'Las Pruebas de Apolo', 'img/img.cate/cienciaficcion15.jpg', 'En esta emocionante serie de libros, Rick Riordan nos presenta a Apolo, el dios griego castigado a vivir como un adolescente mortal. Seguimos sus aventuras mientras intenta recuperar su lugar en el Olimpo, enfrentándose a monstruos y desafíos heroicos en el proceso.', 'Rick Riordan', '5 de junio de 1964', 'Estadounidense', 5);
 
 -- --------------------------------------------------------
 
@@ -101,16 +151,27 @@ CREATE TABLE IF NOT EXISTS `libros` (
   `titulo` varchar(255) NOT NULL,
   `url_img` varchar(300) DEFAULT NULL,
   `descripcion` text,
+  `reseña` text,
   `autor_id` int DEFAULT NULL,
   `categoria_id` int DEFAULT NULL,
   `estado_id` int DEFAULT NULL,
   `id_usuario` int DEFAULT NULL,
+  `fechaAñadido` datetime DEFAULT CURRENT_TIMESTAMP,
+  `FechaLeido` datetime DEFAULT NULL,
   PRIMARY KEY (`id`),
   KEY `autor_id` (`autor_id`),
   KEY `categoria_id` (`categoria_id`),
   KEY `estado_id` (`estado_id`),
   KEY `id_usuario` (`id_usuario`)
-) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=78 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+
+--
+-- Volcado de datos para la tabla `libros`
+--
+
+INSERT INTO `libros` (`id`, `titulo`, `url_img`, `descripcion`, `reseña`, `autor_id`, `categoria_id`, `estado_id`, `id_usuario`, `fechaAñadido`, `FechaLeido`) VALUES
+(69, 'Dune', 'img/img.cate/cienciaficcion1.jpg', 'En un futuro lejano, en un universo donde las familias nobles controlan planetas enteros, surge una lucha por el control del recurso más valioso del universo: la especia melange. Esta es la trama central de \"Dune\", una obra maestra de la ciencia ficción escrita por Frank Herbert.', NULL, 11, 5, 1, 1, '2024-05-02 22:55:50', NULL),
+(77, 'El nombre del viento', 'img/img.cate/cienciaficcion6.webp', 'En el reino de Temerant, el joven Kvothe narra su extraordinaria vida, desde sus humildes comienzos como músico callejero hasta convertirse en una leyenda viva. Patrick Rothfuss nos transporta a un mundo de magia, música y aventura en esta apasionante historia.', NULL, 18, 5, 1, 1, '2024-05-02 23:05:30', NULL);
 
 -- --------------------------------------------------------
 
@@ -125,7 +186,7 @@ CREATE TABLE IF NOT EXISTS `usuarios` (
   `Correo` varchar(255) NOT NULL,
   `Password` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=11 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
 --
 -- Volcado de datos para la tabla `usuarios`
@@ -135,13 +196,6 @@ INSERT INTO `usuarios` (`id`, `Usuario`, `Correo`, `Password`) VALUES
 (1, 'usuario1', 'usuario@gmail.com', '12345678'),
 (2, 'usuario2', 'paola@gmail.com', 'abcd1234'),
 (3, 'usuario3', 'perez@gmail.com', 'tsd78902');
-(4, 'usuario4', 'usuario1@gmail.com', '132465'),
-(5, 'usuario5', 'mena09@gmail.com', 'rrrr34'),
-(6, 'usuario6', 'bruno@gmail.com', 'abc123'),
-(7, 'usuario7', 'carlosp@gmail.com', 'abcd12'),
-(8, 'usuario8', 'fernanda@gmail.com', '123abc'),
-(9, 'usuario9', 'cristian@gmail.com', '123456ab'),
-(10, 'usuario10', 'usuario@gmail.com', '12121212');
 
 --
 -- Restricciones para tablas volcadas
@@ -151,23 +205,17 @@ INSERT INTO `usuarios` (`id`, `Usuario`, `Correo`, `Password`) VALUES
 -- Filtros para la tabla `autores`
 --
 ALTER TABLE `autores`
-INSERT INTO autores (nombre, nacimiento, nacionalidad, descripcion, id_usuario) VALUES
-('George Orwell', '25/06/1903', 'Británico', 'George Orwell fue un escritor y periodista británico...', 1),
-('F. Scott Fitzgerald', '24/09/1896', 'Estadounidense', 'F. Scott Fitzgerald fue un escritor estadounidense...', 2),
-('Gabriel García Márquez', '06/03/1927', 'Colombiano', 'Gabriel García Márquez fue un escritor colombiano...', 3),
-('Harper Lee', '28/04/1926', 'Estadounidense', 'Harper Lee fue una novelista estadounidense...', 4),
-('Julio Cortázar', '26/08/1914', 'Argentino', 'Julio Cortázar fue un escritor, traductor e intelectual...', 5);
+  ADD CONSTRAINT `autores_ibfk_1` FOREIGN KEY (`id_usuario`) REFERENCES `usuarios` (`id`);
 
 --
 -- Filtros para la tabla `libros`
 --
 ALTER TABLE `libros`
-  INSERT INTO libros (titulo, url_img, descripcion, autor_id, categoria_id, estado_id, id_usuario) VALUES
-('1984', '1984.jpg', '1984 es una novela política de ficción distópica...', 1, 2, 1, 1),
-('El Gran Gatsby', 'el_gran_gatsby.jpg', 'El Gran Gatsby es una novela que se desarrolla...', 2, 1, 1, 2),
-('Cien años de soledad', 'cien_anios_de_soledad.jpg', 'Cien años de soledad es una novela escrita por...', 3, 1, 1, 3),
-('Matar a un ruiseñor', 'matar_a_un_ruisenor.jpg', 'Matar a un ruiseñor es una novela escrita por...', 4, 4, 1, 4),
-('1984', '1984.jpg', '1984 es una novela política de ficción distópica...', 5, 2, 1, 5);
+  ADD CONSTRAINT `fk_categoria` FOREIGN KEY (`categoria_id`) REFERENCES `categorias` (`id`),
+  ADD CONSTRAINT `libros_ibfk_1` FOREIGN KEY (`id_usuario`) REFERENCES `usuarios` (`id`),
+  ADD CONSTRAINT `libros_ibfk_3` FOREIGN KEY (`estado_id`) REFERENCES `estados` (`id`),
+  ADD CONSTRAINT `libros_ibfk_4` FOREIGN KEY (`autor_id`) REFERENCES `autores` (`id`);
+COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
