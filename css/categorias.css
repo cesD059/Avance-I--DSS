@@ -1,11 +1,11 @@
-nav {
+ nav {
     background-color: #9a61bb;
     color: #fff;
     padding: 30px 0;
 }
 
 .nav-container {
-    max-width: 1000px;
+    max-width: 800px;
     margin: 0 auto;
     display: flex;
     align-items: center;
@@ -13,9 +13,9 @@ nav {
 }
 
 .search {
-  padding: 10px;
-  border: none;
-  border-radius: 5px;
+    padding: 4px;
+    border: none;
+    border-radius: 5px;
 }
 
 .nav-links {
@@ -32,35 +32,69 @@ nav {
 .nav-links a {
     color: #fff;
     text-decoration: none;
-}body {
+}
+body {
     font-family: Arial, sans-serif;
     margin: 0;
     padding: 0;
   }
-  
+h1 {
+    color: #892be273; /* Color lila */
+    text-align: center;
+}
+
   .galeria {
     display: flex;
+    flex-wrap: wrap;
     justify-content: space-around;
-    align-items: center;
-    height: 80vh;
-    background-color: #fff; /* Color lila */
-  }
-  
-  .imagen {
-    text-align: center;
+    max-width: 1200px;
+    margin: 20px auto;
+}
+
+.imagen {
+    position: relative;
+    margin: 20px;
     cursor: pointer;
-    color: #9c33cc; /* Color blanco para el texto */
-  }
-  
-  .imagen img {
+}
+
+.imagen img {
     width: 200px;
     height: 300px;
-    border-radius: 100%;
-  }
-  
-  p {
-    margin: 30px 0;
-  }
+    object-fit: cover;
+    border-radius: 8px;
+}
+
+.tarjeta {
+    position: absolute;
+    top: 80%;
+    left: 60%;
+    transform: translate(-80%, -80%);
+    color: #FFF; /* Color blanco */
+    padding: 20px;
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 0.3s ease, visibility 0.3s ease;
+    background-color: #2d044480; /* Color de fondo blanco */
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); /* Sombra suave */
+    max-width: 400px;
+    width: 100%;
+}
+
+.imagen:hover .tarjeta {
+    opacity: 5;
+    visibility: visible;
+}
+
+.tarjeta h3 {
+    margin: 0;
+    font-size: 18px;
+}
+
+.tarjeta p {
+    margin: 0px 0;
+    font-size: 14px;
+} 
   .boton-enlace {
     display: flex;
     align-items: center;

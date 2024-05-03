@@ -12,7 +12,7 @@ if(isset($_GET['id'])) {
 
   $_SESSION['message'] = 'Libro borrado con exito';
   $_SESSION['message_type'] = 'danger';
-  header('Location: librosObtenidos_gallery.php');
+  header('Location: librosGaleria.php');
 }
 
 ?>

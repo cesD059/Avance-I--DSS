@@ -1,6 +1,7 @@
 <?php
 include ('includes/head.php');
 include ('db.php');
+$_SESSION['estado'] = isset($_SESSION['estado']) ? $_SESSION['estado'] : 'Obtenido';
 $usuario = $_SESSION['id'];
 
 if (isset ($_POST['save'])) {
@@ -28,7 +29,7 @@ if (isset ($_POST['save'])) {
 
     $_SESSION['message'] = 'Libro añadido con exito';
     $_SESSION['message_type'] = 'success';
-    header('Location: librosObtenidos_gallery.php');
+    header('Location: librosGaleria.php');
 }
 
 include ('includes/navbar.php');

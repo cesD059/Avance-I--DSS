@@ -2,6 +2,7 @@
 include ('includes/head.php');
 include ('includes/navbar.php');
 include ('db.php');
+$_SESSION['estado'] = isset($_GET["estado"]) ? $_GET["estado"] : $_SESSION['estado'];
 
 $query = "SELECT libros.id AS id, libros.titulo AS titulo, libros.url_img AS url_img, libros.descripcion AS descripcion, libros.id_usuario AS usuario, autores.nombre AS autor, categorias.nombre AS categoria, estados.nombre AS estado
             FROM libros
@@ -33,9 +34,10 @@ if (isset ($_POST['buscar_categoria'])) {
   <?php
   unset($_SESSION['message']);
   unset($_SESSION['message_type']);
-} ?>
+} 
 
-<h1 class="display-4 text-center mt-5">Libros Comprados</h1>
+echo "<h1 class='display-4 text-center mt-5'>Libros " . $_SESSION['estado'] . "</h1>"
+?>
 
 <div class="row justify-content-center">
   <div class="col-md-6">
@@ -44,7 +46,7 @@ if (isset ($_POST['buscar_categoria'])) {
   <div class="col-md-6">
 
     <!-- Form de busqueda por categoria -->
-    <form action="librosObtenidos_gallery.php" method="POST">
+    <form action="librosGaleria.php" method="POST">
       <div class="row">
         <div class="col-md-6">
           <select id="categoria_seleccionada" name="categoria_seleccionada" class="form-select">
@@ -82,7 +84,7 @@ if (isset ($_POST['buscar_categoria'])) {
 
     while ($row = mysqli_fetch_array($result_libros)) {
 
-      if ($row['estado'] == 'Obtenido' && $row['usuario'] == $_SESSION['id']) { ?>
+      if ($row['estado'] == $_SESSION['estado']  && $row['usuario'] == $_SESSION['id']) { ?>
 
         <div class='col-md-3'>
           <div class='card' style='width: 18rem;'>

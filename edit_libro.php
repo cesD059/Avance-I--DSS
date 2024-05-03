@@ -6,6 +6,7 @@ $descripcion = '';
 $autor= '';
 $estado= '';
 $categoria= '';
+$_SESSION['estado'] = isset($_SESSION['estado']) ? $_SESSION['estado'] : 'Obtenido';
 
 //Se llaman a la BD los datos del ID correspondiente
 if  (isset($_GET['id'])) {
@@ -25,6 +26,10 @@ if  (isset($_GET['id'])) {
     $categoria = $row['categoria_id'];
     $estado = $row['estado_id'];
   }
+
+  if($url = "img/stock.jpg"){
+    $url = '';
+  }
 }
 
 //En caso de presionar botón 'update' se guardan los nuevos datos
@@ -42,7 +47,7 @@ if (isset($_POST['update'])) {
     }
     if($descripcion == ''){
       $descripcion = 'Sin información';
-  }
+  } 
 
   $query = "UPDATE libros set titulo = '$title',
   url_img = '$url', descripcion = '$descripcion', autor_id = '$autor', categoria_id = '$categoria', estado_id = '$estado', id_usuario = '$usuario' WHERE id=$id";
@@ -51,7 +56,7 @@ if (isset($_POST['update'])) {
 
   $_SESSION['message'] = 'Libro editado con exito';
   $_SESSION['message_type'] = 'success';
-  header('Location: librosObtenidos_gallery.php');
+  header('Location: librosGaleria.php');
 }
 
 include('includes/head.php');
@@ -80,7 +85,7 @@ include('includes/navbar.php');
             </div>
             <div class="form-item">
                 <label for="url">URL Imagen (Opcional):</label>
-                <input type="url" id="url" name="url" placeholder="Introduza una imagen" Opcional pattern=".+\" value="<?php echo $url; ?>" >
+                <input type="url" id="url" name="url" placeholder="Introduza una imagen" value="<?php echo $url; ?>" >
             </div>
             <input type="submit" name="update" value="Guardar Información"/>
             <input type ="reset" value="Limpiar">

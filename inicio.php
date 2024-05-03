@@ -31,8 +31,8 @@ if (!isset($_SESSION['loggedin'])) {
                 <div class="card-body">
                     <h5 class="card-title">Clasifique sus Libros</h5>
                     <p class="card-text">Puede clasificar sus libros en "Obtenidos" o "Deseados".</p>
-                    <a href="librosDeseados_gallery.php" class="card-link">Ver Obtenidos</a>
-                    <a href="librosDeseados_gallery.php" class="card-link">Ver Deseados</a>
+                    <a href="librosGaleria.php?estado=Obtenido" class="card-link">Ver Obtenidos</a>
+                    <a href="librosGaleria.php?estado=Deseado" class="card-link">Ver Deseados</a>
                 </div>
             </div>
         </div>

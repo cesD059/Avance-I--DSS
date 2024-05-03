@@ -14,13 +14,13 @@
           <a class="nav-link" aria-current="page" href="inicio.php">Inicio</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" href="#">Catalogo</a>
+          <a class="nav-link" href="catalogoIndex.php">Catalogo</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" href="librosObtenidos_gallery.php">Mis Libros</a>
+          <a class="nav-link" href="librosGaleria.php?estado=Obtenido">Mis Libros</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" href="librosDeseados_gallery.php">Libros Deseados</a>
+          <a class="nav-link" href="librosGaleria.php?estado=Deseado">Libros Deseados</a>
         </li>
         <li class="nav-item">
           <a class="nav-link" href="Autores.php">Autores</a>
