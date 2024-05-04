@@ -4,6 +4,10 @@ include ('includes/navbar.php');
 include ('db.php');
 $_SESSION['estado'] = isset($_GET["estado"]) ? $_GET["estado"] : $_SESSION['estado'];
 
+if($_SESSION['estado'] != "Obtenido" && $_SESSION['estado'] != "Deseado" ){
+  $_SESSION['estado'] = "Obtenido";
+}
+
 $query = "SELECT libros.id AS id, libros.titulo AS titulo, libros.url_img AS url_img, libros.descripcion AS descripcion, libros.id_usuario AS usuario, autores.nombre AS autor, categorias.nombre AS categoria, estados.nombre AS estado
             FROM libros
             INNER JOIN autores ON libros.autor_id = autores.id

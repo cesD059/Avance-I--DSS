@@ -9,8 +9,10 @@ if (isset ($_POST['save'])) {
     $autor = $_POST['autor'];
     $url = $_POST['url'];
     $descripcion = $_POST['descripcion'];
+    $reseña = $_POST['reseña'];
     $categoria = $_POST['categoria'];
     $estado = $_POST['estado'];
+    $fechaLeido = $_POST['fechaLeido'];
 
     if ($url == '') {
         $url = 'img/stock.jpg';
@@ -19,8 +21,8 @@ if (isset ($_POST['save'])) {
         $descripcion = 'Sin información';
     }
 
-    $add_libro_query = "INSERT INTO libros (titulo,url_img,descripcion,autor_id,estado_id,categoria_id,id_usuario) 
-    VALUES ('$title', '$url', '$descripcion','$autor', '$estado', '$categoria', '$usuario')";
+    $add_libro_query = "INSERT INTO libros (titulo,url_img,descripcion,reseña,autor_id,estado_id,categoria_id,id_usuario,FechaLeido) 
+    VALUES ('$title', '$url', '$descripcion','$reseña','$autor', '$estado', '$categoria', '$usuario', '$fechaLeido')";
     $result = mysqli_query($conn, $add_libro_query);
 
     if (!$result) {
@@ -44,7 +46,7 @@ include ('includes/navbar.php');
         <div class="form-item">
             <label for="nombre">Titulo:</label>
             <input type="text" id="titulo" name="titulo" placeholder="Introduzca el titulo del libro" required
-                minlength="1">
+                minlength="1" maxlength="250">
         </div>
         <div class="form-item">
             <label for="autor">Autor:</label>
@@ -60,14 +62,17 @@ include ('includes/navbar.php');
                     </option>
                 <?php
                 } ?>
-
+                <small><a href="Autores.php">Agregue autores aquí</a></small>
             </select>
             <small><a href="Autores.php">Agregue autores aquí</a></small>
         </div>
         <div class="form-item">
             <label for="url">URL Imagen (Opcional):</label>
-            <input type="url" id="url" name="url" placeholder="Introduzca su Imagen" Opcional>
-
+            <input type="url" id="url" name="url"  maxlength="300" placeholder="Introduzca su Imagen" Opcional>
+        </div>
+        <div class="form-item">
+            <label for="reseña">Reseña Personal:</label>
+            <textarea name="reseña" placeholder="Introduzca una reseña personal u opinion!" maxlength="500"></textarea>
         </div>
         <input type="submit" name="save" value="Guardar Información" />
         <input type="reset" value="Limpiar">
@@ -96,12 +101,15 @@ include ('includes/navbar.php');
             </select>
         </div>
         <div class="form-item">
-            <label for="descripcion">Información adicional:</label>
-            <textarea name="descripcion" placeholder="Introduzca sus opiniones o datos interesantes!"></textarea>
+            <label for="descripcion">Descripción:</label>
+            <textarea name="descripcion" placeholder="Introduzca una descripción del libro o datos interesantes!" maxlength="500"></textarea>
+        </div>
+        <div class="form-item">
+                <label for="fechaLeido">Completado el día:</label>
+                <input type="date" id="fechaLeido" name="fechaLeido" placeholder="">
         </div>
     </div>
 </form>
-
 <?php
 include ('includes/footer.php');
 ?>

@@ -30,5 +30,4 @@ include ('includes/navbar.php');
     </div>
   </div>
 
-</body>
-</html>
+<?php include ('includes/footer.php') ?>

@@ -3,12 +3,14 @@ include("db.php");
 $title = '';
 $url= '';
 $descripcion = '';
+$reseña = '';
 $autor= '';
 $estado= '';
 $categoria= '';
+$fechaLeido = '';
 $_SESSION['estado'] = isset($_SESSION['estado']) ? $_SESSION['estado'] : 'Obtenido';
 
-//Se llaman a la BD los datos del ID correspondiente
+//Se toman de la BD los datos del ID correspondiente
 if  (isset($_GET['id'])) {
   $id = $_GET['id'];
 
@@ -22,9 +24,11 @@ if  (isset($_GET['id'])) {
     $title = $row['titulo'];
     $url = $row['url_img'];
     $descripcion = $row['descripcion'];
+    $reseña = $row['reseña'];
     $autor = $row['autor_id'];
     $categoria = $row['categoria_id'];
     $estado = $row['estado_id'];
+    $fechaLeido = $row['FechaLeido'];
   }
 
   if($url = "img/stock.jpg"){
@@ -38,9 +42,11 @@ if (isset($_POST['update'])) {
   $title = $_POST['titulo'];
   $url = $_POST['url'];
   $descripcion = $_POST['descripcion'];
+  $reseña = $_POST['reseña'];
   $autor = $_POST['autor'];
   $categoria = $_POST['categoria'];
   $estado = $_POST['estado'];
+  $fechaLeido = $_POST['fechaLeido'];
 
   if($url == '') {
     $url = 'img/stock.jpg';
@@ -50,7 +56,7 @@ if (isset($_POST['update'])) {
   } 
 
   $query = "UPDATE libros set titulo = '$title',
-  url_img = '$url', descripcion = '$descripcion', autor_id = '$autor', categoria_id = '$categoria', estado_id = '$estado', id_usuario = '$usuario' WHERE id=$id";
+  url_img = '$url', descripcion = '$descripcion', reseña = '$reseña', autor_id = '$autor', categoria_id = '$categoria', estado_id = '$estado', id_usuario = '$usuario', FechaLeido = '$fechaLeido' WHERE id=$id";
 
   mysqli_query($conn, $query);
 
@@ -69,7 +75,7 @@ include('includes/navbar.php');
         <div class="left-section">
             <div class="form-item">
                 <label for="nombre">Titulo:</label>
-                <input type="text" id="titulo" name="titulo" required minlength="1" value="<?php echo $title; ?>" placeholder="Introduzca el titulo del libro">
+                <input type="text" id="titulo" name="titulo" required minlength="1"  maxlength="250" value="<?php echo $title; ?>" placeholder="Introduzca el titulo del libro">
             </div>
             <div class="form-item">
                 <label for="autor">Autor:</label>
@@ -85,7 +91,11 @@ include('includes/navbar.php');
             </div>
             <div class="form-item">
                 <label for="url">URL Imagen (Opcional):</label>
-                <input type="url" id="url" name="url" placeholder="Introduza una imagen" value="<?php echo $url; ?>" >
+                <input type="url" id="url" name="url"  maxlength="300" placeholder="Introduza una imagen" value="<?php echo $url; ?>" >
+            </div>
+            <div class="form-item">
+            <label for="reseña">Reseña Personal:</label>
+            <textarea name="reseña" placeholder="Introduzca una reseña personal u opinion!" maxlength="500"><?php echo $reseña; ?></textarea>
             </div>
             <input type="submit" name="update" value="Guardar Información"/>
             <input type ="reset" value="Limpiar">
@@ -117,7 +127,10 @@ include('includes/navbar.php');
                     <label for="descripcion">Información adicional:</label>
                     <textarea name="descripcion" placeholder="Introduzca sus opiniones o datos interesantes!"><?php echo $descripcion; ?></textarea>
             </div>
+            <div class="form-item">
+                <label for="fechaLeido">Completado el día:</label>
+                <input type="date" id="fechaLeido" name="fechaLeido" placeholder="">
+            </div>
         </div>
-    </form>
-              
+    </form>          
 <?php include('includes/footer.php'); ?>
