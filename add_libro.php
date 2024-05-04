@@ -12,7 +12,7 @@ if (isset ($_POST['save'])) {
     $reseña = $_POST['reseña'];
     $categoria = $_POST['categoria'];
     $estado = $_POST['estado'];
-    $fechaLeido = $_POST['fechaLeido'];
+    $fechaCompra = $_POST['fechaCompra'];
 
     if ($url == '') {
         $url = 'img/stock.jpg';
@@ -21,8 +21,8 @@ if (isset ($_POST['save'])) {
         $descripcion = 'Sin información';
     }
 
-    $add_libro_query = "INSERT INTO libros (titulo,url_img,descripcion,reseña,autor_id,estado_id,categoria_id,id_usuario,FechaLeido) 
-    VALUES ('$title', '$url', '$descripcion','$reseña','$autor', '$estado', '$categoria', '$usuario', '$fechaLeido')";
+    $add_libro_query = "INSERT INTO libros (titulo,url_img,descripcion,reseña,autor_id,estado_id,categoria_id,id_usuario,fechaCompra) 
+    VALUES ('$title', '$url', '$descripcion','$reseña','$autor', '$estado', '$categoria', '$usuario', '$fechaCompra')";
     $result = mysqli_query($conn, $add_libro_query);
 
     if (!$result) {
@@ -105,8 +105,8 @@ include ('includes/navbar.php');
             <textarea name="descripcion" placeholder="Introduzca una descripción del libro o datos interesantes!" maxlength="500"></textarea>
         </div>
         <div class="form-item">
-                <label for="fechaLeido">Completado el día:</label>
-                <input type="date" id="fechaLeido" name="fechaLeido" placeholder="">
+                <label for="fechaCompra">Comprado el día:</label>
+                <input type="date" id="fechaCompra" name="fechaCompra" placeholder="">
         </div>
     </div>
 </form>

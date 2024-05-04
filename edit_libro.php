@@ -7,7 +7,7 @@ $reseña = '';
 $autor= '';
 $estado= '';
 $categoria= '';
-$fechaLeido = '';
+$fechaCompra = '';
 $_SESSION['estado'] = isset($_SESSION['estado']) ? $_SESSION['estado'] : 'Obtenido';
 
 //Se toman de la BD los datos del ID correspondiente
@@ -28,7 +28,7 @@ if  (isset($_GET['id'])) {
     $autor = $row['autor_id'];
     $categoria = $row['categoria_id'];
     $estado = $row['estado_id'];
-    $fechaLeido = $row['FechaLeido'];
+    $fechaCompra = $row['fechaCompra'];
   }
 
   if($url = "img/stock.jpg"){
@@ -46,7 +46,7 @@ if (isset($_POST['update'])) {
   $autor = $_POST['autor'];
   $categoria = $_POST['categoria'];
   $estado = $_POST['estado'];
-  $fechaLeido = $_POST['fechaLeido'];
+  $fechaCompra = $_POST['fechaCompra'];
 
   if($url == '') {
     $url = 'img/stock.jpg';
@@ -56,7 +56,7 @@ if (isset($_POST['update'])) {
   } 
 
   $query = "UPDATE libros set titulo = '$title',
-  url_img = '$url', descripcion = '$descripcion', reseña = '$reseña', autor_id = '$autor', categoria_id = '$categoria', estado_id = '$estado', id_usuario = '$usuario', FechaLeido = '$fechaLeido' WHERE id=$id";
+  url_img = '$url', descripcion = '$descripcion', reseña = '$reseña', autor_id = '$autor', categoria_id = '$categoria', estado_id = '$estado', id_usuario = '$usuario', fechaCompra = '$fechaCompra' WHERE id=$id";
 
   mysqli_query($conn, $query);
 
@@ -128,8 +128,8 @@ include('includes/navbar.php');
                     <textarea name="descripcion" placeholder="Introduzca sus opiniones o datos interesantes!"><?php echo $descripcion; ?></textarea>
             </div>
             <div class="form-item">
-                <label for="fechaLeido">Completado el día:</label>
-                <input type="date" id="fechaLeido" name="fechaLeido" placeholder="">
+                <label for="fechaCompra">Comprado el día:</label>
+                <input type="date" id="fechaCompra" name="fechaCompra" placeholder="">
             </div>
         </div>
     </form>          
