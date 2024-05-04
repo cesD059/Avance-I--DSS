@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1:3306
--- Tiempo de generación: 03-05-2024 a las 05:08:05
+-- Tiempo de generación: 04-05-2024 a las 01:57:54
 -- Versión del servidor: 8.0.31
 -- Versión de PHP: 8.0.26
 
@@ -21,6 +21,47 @@ SET time_zone = "+00:00";
 -- Base de datos: `libros_db`
 --
 
+DELIMITER $$
+--
+-- Procedimientos
+--
+DROP PROCEDURE IF EXISTS `obtener_libros`$$
+CREATE DEFINER=`root`@`localhost` PROCEDURE `obtener_libros` ()   BEGIN
+    SELECT 
+        libros.id AS id,
+        libros.titulo AS titulo,
+        libros.url_img AS url_img,
+        libros.descripcion AS descripcion,
+        libros.id_usuario AS usuario,
+        autores.nombre AS autor,
+        categorias.nombre AS categoria,
+        estados.nombre AS estado
+    FROM libros
+    INNER JOIN autores ON libros.autor_id = autores.id
+    INNER JOIN categorias ON libros.categoria_id = categorias.id
+    INNER JOIN estados ON libros.estado_id = estados.id;
+END$$
+
+DROP PROCEDURE IF EXISTS `obtener_libros_por_categoria`$$
+CREATE DEFINER=`root`@`localhost` PROCEDURE `obtener_libros_por_categoria` (IN `categoria_id` INT)   BEGIN
+    SELECT 
+        libros.id AS id,
+        libros.titulo AS titulo,
+        libros.url_img AS url_img,
+        libros.descripcion AS descripcion,
+        libros.id_usuario AS usuario,
+        autores.nombre AS autor,
+        categorias.nombre AS categoria,
+        estados.nombre AS estado
+    FROM libros
+    INNER JOIN autores ON libros.autor_id = autores.id
+    INNER JOIN categorias ON libros.categoria_id = categorias.id
+    INNER JOIN estados ON libros.estado_id = estados.id
+    WHERE categorias.id = categoria_id;
+END$$
+
+DELIMITER ;
+
 -- --------------------------------------------------------
 
 --
@@ -37,16 +78,16 @@ CREATE TABLE IF NOT EXISTS `autores` (
   `id_usuario` int DEFAULT NULL,
   PRIMARY KEY (`id`),
   KEY `id_usuario` (`id_usuario`)
-) ENGINE=InnoDB AUTO_INCREMENT=19 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=20 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
 --
 -- Volcado de datos para la tabla `autores`
 --
 
 INSERT INTO `autores` (`id`, `nombre`, `nacimiento`, `nacionalidad`, `descripcion`, `id_usuario`) VALUES
-(10, 'Edgar Allan Poe', '2024-05-08', 'Anguilla', 'Me encanta este autor', 1),
 (11, 'Frank Herbert', '8 de octubre de 1920', 'Estadounidense', NULL, 1),
-(18, 'Patrick Rothfuss', '6 de junio de 1973', 'Estadounidense', NULL, 1);
+(18, 'Patrick Rothfuss', '6 de junio de 1973', 'Estadounidense', NULL, 1),
+(19, 'Rick Yancey', '4 de noviembre de 1962', 'Estadounidense', NULL, 1);
 
 -- --------------------------------------------------------
 
@@ -157,21 +198,22 @@ CREATE TABLE IF NOT EXISTS `libros` (
   `estado_id` int DEFAULT NULL,
   `id_usuario` int DEFAULT NULL,
   `fechaAñadido` datetime DEFAULT CURRENT_TIMESTAMP,
-  `FechaLeido` datetime DEFAULT NULL,
+  `fechaCompra` datetime DEFAULT NULL,
   PRIMARY KEY (`id`),
   KEY `autor_id` (`autor_id`),
   KEY `categoria_id` (`categoria_id`),
   KEY `estado_id` (`estado_id`),
   KEY `id_usuario` (`id_usuario`)
-) ENGINE=InnoDB AUTO_INCREMENT=78 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=84 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
 --
 -- Volcado de datos para la tabla `libros`
 --
 
-INSERT INTO `libros` (`id`, `titulo`, `url_img`, `descripcion`, `reseña`, `autor_id`, `categoria_id`, `estado_id`, `id_usuario`, `fechaAñadido`, `FechaLeido`) VALUES
+INSERT INTO `libros` (`id`, `titulo`, `url_img`, `descripcion`, `reseña`, `autor_id`, `categoria_id`, `estado_id`, `id_usuario`, `fechaAñadido`, `fechaCompra`) VALUES
 (69, 'Dune', 'img/img.cate/cienciaficcion1.jpg', 'En un futuro lejano, en un universo donde las familias nobles controlan planetas enteros, surge una lucha por el control del recurso más valioso del universo: la especia melange. Esta es la trama central de \"Dune\", una obra maestra de la ciencia ficción escrita por Frank Herbert.', NULL, 11, 5, 1, 1, '2024-05-02 22:55:50', NULL),
-(77, 'El nombre del viento', 'img/img.cate/cienciaficcion6.webp', 'En el reino de Temerant, el joven Kvothe narra su extraordinaria vida, desde sus humildes comienzos como músico callejero hasta convertirse en una leyenda viva. Patrick Rothfuss nos transporta a un mundo de magia, música y aventura en esta apasionante historia.', NULL, 18, 5, 1, 1, '2024-05-02 23:05:30', NULL);
+(77, 'El nombre del viento', 'img/img.cate/cienciaficcion6.webp', 'En el reino de Temerant, el joven Kvothe narra su extraordinaria vida, desde sus humildes comienzos como músico callejero hasta convertirse en una leyenda viva. Patrick Rothfuss nos transporta a un mundo de magia, música y aventura en esta apasionante historia.', NULL, 18, 5, 1, 1, '2024-05-02 23:05:30', NULL),
+(78, 'La quinta Ola', 'img/img.cate/cienciaficcion4.jpg', 'En un mundo devastado por una serie de ataques alienígenas, Cassie Sullivan lucha por sobrevivir y encontrar a su hermano. \"La quinta Ola\" de Rick Yancey es una emocionante historia de resistencia humana y sacrificio en medio de la adversidad.', NULL, 19, 5, 2, 1, '2024-05-03 17:31:42', NULL);
 
 -- --------------------------------------------------------
 
@@ -220,4 +262,3 @@ COMMIT;
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
-

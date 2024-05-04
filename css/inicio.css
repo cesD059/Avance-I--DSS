@@ -3,6 +3,7 @@ nav {
     background-color: #9a61bb;
     color: #fff;
     padding: 30px ;
+   width: 100%;
 }
 body {
     font-family: Arial, sans-serif;
@@ -256,4 +257,10 @@ footer p{
 }
 .details-container h1 {
   color: #8A2BE2; /* Color del título */
+}
+
+.mensaje {
+  margin-top: 20px;
+  text-align: center;
+
 }

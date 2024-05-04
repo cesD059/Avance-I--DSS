@@ -8,24 +8,21 @@ if($_SESSION['estado'] != "Obtenido" && $_SESSION['estado'] != "Deseado" ){
   $_SESSION['estado'] = "Obtenido";
 }
 
-$query = "SELECT libros.id AS id, libros.titulo AS titulo, libros.url_img AS url_img, libros.descripcion AS descripcion, libros.id_usuario AS usuario, autores.nombre AS autor, categorias.nombre AS categoria, estados.nombre AS estado
-            FROM libros
-            INNER JOIN autores ON libros.autor_id = autores.id
-            INNER JOIN categorias ON libros.categoria_id = categorias.id
-            INNER JOIN estados ON libros.estado_id = estados.id;";
+$mensaje = "";
+$query = "CALL obtener_libros()";
 
 
 if (isset ($_POST['buscar_categoria'])) {
   $categoria = $_POST['categoria_seleccionada'];
-  if ($categoria != 0) {
-    //Se añade "WHERE categorias.id = '$categoria'"
-    $query = "SELECT libros.id AS id, libros.titulo AS titulo, libros.url_img AS url_img,  libros.descripcion AS descripcion, libros.id_usuario AS usuario, autores.nombre AS autor, categorias.nombre AS categoria, estados.nombre AS estado
-            FROM libros
-            INNER JOIN autores ON libros.autor_id = autores.id
-            INNER JOIN categorias ON libros.categoria_id = categorias.id
-            INNER JOIN estados ON libros.estado_id = estados.id WHERE categorias.id = '$categoria';";
+  if ($categoria != 0) { 
+    $query = "CALL obtener_libros_por_categoria($categoria)";
   }
 }
+
+$result_libros = mysqli_query($conn, $query);
+    if (mysqli_num_rows($result_libros) < 1){
+      $mensaje = "No hemos encontrado libros :(";
+    }
 ?>
 
 <br>
@@ -84,7 +81,7 @@ echo "<h1 class='display-4 text-center mt-5'>Libros " . $_SESSION['estado'] . "<
   <div class="row contenedor_galeria">
     <?php
 
-    $result_libros = mysqli_query($conn, $query);
+    echo "<p class='mensaje'>$mensaje</p>"; //Se mostrara si hay libros coincidentes
 
     while ($row = mysqli_fetch_array($result_libros)) {
 
