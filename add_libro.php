@@ -20,6 +20,9 @@ if (isset ($_POST['save'])) {
     if ($descripcion == '') {
         $descripcion = 'Sin información';
     }
+    if ($reseña == ''){
+        $descripcion = 'Sin reseña';
+    }
 
     $add_libro_query = "INSERT INTO libros (titulo,url_img,descripcion,reseña,autor_id,estado_id,categoria_id,id_usuario,fechaCompra) 
     VALUES ('$title', '$url', '$descripcion','$reseña','$autor', '$estado', '$categoria', '$usuario', '$fechaCompra')";

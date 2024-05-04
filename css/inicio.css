@@ -65,9 +65,6 @@ h1{
     line-height: 1;
     font-weight: 500;
 }
-div.row{
-    color: #9a61bb;
-}
 .boton-enlace {
     background-color: #8A2BE2; /* Color lila */
     color: #FFF; /* Color blanco */
@@ -242,4 +239,21 @@ h1{
   border: 0px solid #ccc;
   border-radius: 8px;
   font-size: 14px;
+}
+
+/*Estilos del footer*/
+footer p{
+  color: #9a61bb;
+}
+
+/*Estilos de InformacionLibro*/
+.details-container {
+  background-color: #fff; 
+  padding: 20px;
+  border-radius: 10px;
+  box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+  margin-top: 20px;
+}
+.details-container h1 {
+  color: #8A2BE2; /* Color del título */
 }
