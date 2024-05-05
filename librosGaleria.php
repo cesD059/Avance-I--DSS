@@ -1,33 +1,34 @@
 <?php
+
+//Codigo Incluido (Head, NavBar y Conexión a Base de datos)
 include ('includes/head.php');
 include ('includes/navbar.php');
 include ('db.php');
-$_SESSION['estado'] = isset($_GET["estado"]) ? $_GET["estado"] : $_SESSION['estado'];
+include ('validaciones/validaciones_estado.php');
 
-if($_SESSION['estado'] != "Obtenido" && $_SESSION['estado'] != "Deseado" ){
-  $_SESSION['estado'] = "Obtenido";
-}
-
-$mensaje = "";
-$query = "CALL obtener_libros()";
+$mensaje = ""; //Inicialización de variable
+$query = "CALL obtener_libros()"; //Query Default, llama Todos los libros
 
 
-if (isset ($_POST['buscar_categoria'])) {
+if (isset($_POST['buscar_categoria'])) {
   $categoria = $_POST['categoria_seleccionada'];
-  if ($categoria != 0) { 
-    $query = "CALL obtener_libros_por_categoria($categoria)";
+  if ($categoria != 0) {
+    $query = "CALL obtener_libros_por_categoria($categoria)"; //Query llama libros por categoria
   }
 }
 
-$result_libros = mysqli_query($conn, $query);
-    if (mysqli_num_rows($result_libros) < 1){
-      $mensaje = "No hemos encontrado libros :(";
-    }
+$result_libros = mysqli_query($conn, $query); //Se ejecuta Query
+
+//Se asigna mensaje si no hay libros que coincidan 
+if (mysqli_num_rows($result_libros) < 1) {
+  $mensaje = "No hemos encontrado libros :(";
+}
 ?>
 
 <br>
 
-<?php if (isset ($_SESSION['message'])) { ?>
+<!-- Alerta desechable -->
+<?php if (isset($_SESSION['message'])) { ?>
   <div class="alert alert-<?= $_SESSION['message_type'] ?> alert-dismissible fade show" role="alert">
     <?= $_SESSION['message'] ?>
     <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
@@ -35,11 +36,12 @@ $result_libros = mysqli_query($conn, $query);
   <?php
   unset($_SESSION['message']);
   unset($_SESSION['message_type']);
-} 
+}
 
-echo "<h1 class='display-4 text-center mt-5'>Libros " . $_SESSION['estado'] . "</h1>"
+echo "<h1 class='display-4 text-center mt-5'>Libros " . $_SESSION['estado'] . "s</h1>"; // Titulo de pagina
 ?>
 
+<!-- Botones para Agregar libro y Buscar Categoria  -->
 <div class="row justify-content-center">
   <div class="col-md-6">
     <a href="add_libro.php" class="btn btn-success" id="agregar_libro">Agregar nuevo libro</a>
@@ -81,11 +83,11 @@ echo "<h1 class='display-4 text-center mt-5'>Libros " . $_SESSION['estado'] . "<
   <div class="row contenedor_galeria">
     <?php
 
-    echo "<p class='mensaje'>$mensaje</p>"; //Se mostrara si hay libros coincidentes
-
+    echo "<p class='mensaje'>$mensaje</p>"; //Mensaje si NO hay libros coincidentes con categoria.
+    
     while ($row = mysqli_fetch_array($result_libros)) {
 
-      if ($row['estado'] == $_SESSION['estado']  && $row['usuario'] == $_SESSION['id']) { ?>
+      if ($row['estado'] == $_SESSION['estado'] && $row['usuario'] == $_SESSION['id']) { ?>
 
         <div class='col-md-3'>
           <div class='card' style='width: 18rem;'>
