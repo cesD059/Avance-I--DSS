@@ -3,12 +3,27 @@ include ('includes/head.php');
 include ('includes/navbar.php');
 include ('includes/sub-navbar.php');
 include ('db.php');
+$NombreCategoria = '';
 
 $_SESSION['Categoria'] = isset($_GET['Categoria']) ? $_GET['Categoria'] : $_SESSION['Categoria'];
 $CategoriaSolicitada = $_SESSION['Categoria'];
-  $query = "SELECT * FROM catalogo WHERE categoria_id=$CategoriaSolicitada";
 
-  $result = mysqli_query($conn, $query);
+  //Se especifican queries a usar
+  $queryObtenerCatalogo = "SELECT * FROM catalogo WHERE categoria_id=$CategoriaSolicitada";
+  $queryNombreCategoria = "SELECT nombre FROM categorias WHERE id = $CategoriaSolicitada";
+
+  //Se ejecutan los queries
+  $Catalogo = mysqli_query($conn, $queryObtenerCatalogo);
+  $CategoriaInfo = mysqli_query($conn, $queryNombreCategoria);
+
+  if (mysqli_num_rows($CategoriaInfo) == 1){
+  $row = mysqli_fetch_array($CategoriaInfo);
+  $NombreCategoria = $row['nombre'];
+  } else{
+    $mensaje = "Categoria no encontrada en el cátalogo.";
+  }
+
+
 ?>
 
 
@@ -19,11 +34,12 @@ $CategoriaSolicitada = $_SESSION['Categoria'];
   <a href="add_libro.php" class="btn btn-book" id="agregar">Agrega uno por tu cuenta!</a>
   </div>
 
-  <h1 class="display-4 text-center mt-5">Ciencia Ficción</h1>
+  <h1 class="display-4 text-center mt-5"><?= $NombreCategoria?></h1>
     <div class="galeria">
 
     <?php
-    while ($row = mysqli_fetch_array($result)) { ?>
+    include ('includes/mensajeError.php'); //Se incluye codigo para mostrar mensajes al usuario
+    while ($row = mysqli_fetch_array($Catalogo)) { ?>
     <div class="imagen">
       <img src=<?= $row['url_img']?> alt="Imagen 1">
       <div class="tarjeta">

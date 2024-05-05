@@ -49,7 +49,7 @@ if (mysqli_num_rows($result) == 1) {
 
     $_SESSION['message'] = 'Libro añadido con exito';
     $_SESSION['message_type'] = 'success';
-    header('Location: librosGaleria.php');
+    header("Location: librosGaleria.php?estado=$estado");
 
   }
 
