@@ -18,7 +18,7 @@ include ('includes/head.php');
     <h1 class="display-2 text-center mt-2">MyBooks - Log-In</h1>
 
     <div class="login-content">
-        <form class='form' action="login_validacion.php" method="post">
+        <form class='form' action="validaciones/login_validacion.php" method="post">
             <div class="form-item">
                 <img src="img\login.png" alt="Imagen de login" class="login-image">
             </div>
