@@ -105,6 +105,10 @@ echo "<h1 class='display-4 text-center mt-5'>Libros " . $_SESSION['estado'] . "s
               <p class='card-text'>
                 <?php echo $row['descripcion'] ?>
               </p>
+              <?php if($_SESSION['estado'] == 'Deseado'){
+                echo "<a href='cambiar_estado_libro.php?id={$row['id']}' class='btn btn-primary btn-success'>Cambiar a Obtenido</a>";
+              }
+              ?>
               <a href="InformacionLibro.php?id=<?php echo $row['id'] ?>" class='btn btn-primary btn-eliminar'>Ver</a>
               <a href="edit_libro.php?id=<?php echo $row['id'] ?>" class='btn btn-warning btn-eliminar'>Editar</a>
               <a href="delete_libro.php?id=<?php echo $row['id'] ?>" class='btn btn-danger btn-eliminar'>Eliminar</a>
