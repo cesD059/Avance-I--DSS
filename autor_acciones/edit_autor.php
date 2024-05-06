@@ -20,6 +20,8 @@ if  (isset($_GET['id'])) {
   
       $nombre = $row['nombre'];
       $descripcion = $row['descripcion'];
+      $nacionalidad = $row['nacionalidad'];
+      $nacimiento = $row['nacimiento'];
     }
   }
 
@@ -62,7 +64,7 @@ include('includes/navbar.php');
             </div>
             <div class="form-item">
                 <label for="nacimiento">Nacimiento:</label>
-                <input type="date" id="nacimiento" name="nacimiento" required>
+                <input type="date" value="" id="nacimiento" name="nacimiento" required>
             </div>
             <input type="submit" name="save" value="Guardar Información"/>
             <input type ="reset" value="Limpiar">
@@ -72,7 +74,7 @@ include('includes/navbar.php');
                 <div class="form-item">
                 <label for="nacionalidad">Nacionalidad:</label>
                     <select name="nacionalidad">
-                        <option value='' >Seleccione país</option>
+                        <option value='<?=$nacionalidad ?>'selected="true"><?=$nacionalidad ?></option>
                         <?php
                         foreach($countries as $country) { 
                            echo "<option value='$country'>$country</option>";
