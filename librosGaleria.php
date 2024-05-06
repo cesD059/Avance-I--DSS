@@ -27,7 +27,7 @@ if (mysqli_num_rows($result_libros) < 1) {
 
 <br>
 
-<!-- Alerta desechable -->
+<!-- Alerta  -->
 <?php if (isset($_SESSION['message'])) { ?>
   <div class="alert alert-<?= $_SESSION['message_type'] ?> alert-dismissible fade show" role="alert">
     <?= $_SESSION['message'] ?>
