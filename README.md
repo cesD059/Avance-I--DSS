@@ -1,4 +1,4 @@
-# Proyecto Catedra Avance 1 - DSS
+# Proyecto Catedra Final - DSS
 ## Desarrollo de Aplic. Web con Soft. Interpret.en el Servidor
 ## DSS404 - G05T
 
