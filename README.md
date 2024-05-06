@@ -15,3 +15,6 @@
 - [Link Notion](https://succinct-appeal-f9e.notion.site/Proyecto-Catedra-Avance-1-DSS-92c8d70fc7e94e8db406b907372f7ea6?pvs=4)
 - [Link Documento](https://drive.google.com/file/d/1nR3zAazwNF9tGwAagfpK2rPR7t8tjSYN/view?usp=sharing)
 - [Link MockUps](https://drive.google.com/file/d/1CGikJb1zNHRsLziNDcSNpfaJIrxEQvlf/view?usp=sharing)
+- [Link de Manual de Usuario(https://drive.google.com/file/d/1Bllz_TApAE-Zmoz5PZRXkm02uMGIlOFP/view?usp=sharing)]
+- [Link de Manual Técnico(https://drive.google.com/file/d/10NBiIA9A4ryDXVRmWV-xzENtQUWKSOpo/view?usp=sharing)]
+- [Link de Presentacion(https://drive.google.com/file/d/13HEG3p7lTHw4eIQ_5RMLoGlUPJOmMz-O/view?usp=sharing)]
