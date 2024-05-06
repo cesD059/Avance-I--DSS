@@ -16,5 +16,5 @@
 - [Link Documento](https://drive.google.com/file/d/1nR3zAazwNF9tGwAagfpK2rPR7t8tjSYN/view?usp=sharing)
 - [Link MockUps](https://drive.google.com/file/d/1CGikJb1zNHRsLziNDcSNpfaJIrxEQvlf/view?usp=sharing)
 - [Link Manual de Usuario](https://drive.google.com/file/d/1Bllz_TApAE-Zmoz5PZRXkm02uMGIlOFP/view?usp=sharing)
-- [Link de Manual Técnico(https://drive.google.com/file/d/10NBiIA9A4ryDXVRmWV-xzENtQUWKSOpo/view?usp=sharing)]
-- [Link de Presentacion(https://drive.google.com/file/d/13HEG3p7lTHw4eIQ_5RMLoGlUPJOmMz-O/view?usp=sharing)]
+- [Link Manual Técnico](https://drive.google.com/file/d/10NBiIA9A4ryDXVRmWV-xzENtQUWKSOpo/view?usp=sharing)
+- [Link Presentacion](https://drive.google.com/file/d/13HEG3p7lTHw4eIQ_5RMLoGlUPJOmMz-O/view?usp=sharing)
